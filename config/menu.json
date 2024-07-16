@@ -5,8 +5,12 @@
       "url": "/"
     },
     {
-      "name": "Login",
+      "name": "Sign Up",
       "url": "/contact"
+    },
+    {
+      "name": "Login",
+      "url": "/login"
     },
     {
       "name": "Make Your Case",
@@ -15,6 +19,10 @@
     {
       "name": "Checklist",
       "url": "/checklist"
+    },
+    {
+      "name": "Profile",
+      "url": "/profile"
     }
   ],
   "footer": [

@@ -5,10 +5,13 @@ import { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
 import "styles/style.scss";
 import { QueryClient, QueryClientProvider } from "react-query";
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 const App = ({ Component, pageProps }) => {
-  // default theme setup
 
+  // default theme setup
+  // const session = useSession();
   const [client] = useState(new QueryClient());
   // import google font css
   const pf = theme.fonts.font_family.primary;
@@ -55,9 +58,9 @@ const App = ({ Component, pageProps }) => {
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
       </Head>
-      <QueryClientProvider client={client}>
-        <Component {...pageProps} />
-      </QueryClientProvider>
+        <QueryClientProvider client={client}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
     </>
   );
 };

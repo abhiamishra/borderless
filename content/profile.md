@@ -1,6 +1,6 @@
 ---
-title: "Sign Up"
-layout: "contact"
+title: "Profile"
+layout: "profile"
 draft: false
 info: 
   title: 

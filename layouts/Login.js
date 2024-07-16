@@ -4,25 +4,24 @@ import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { useState } from "react";
 import { auth } from '../pages/firebase/config'
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { useRouter } from "next/navigation";
 // import { createUserWithEmailAndPassword } from "@firebase/auth";
-const Contact = ({ data }) => {
+const Login = ({ data }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+  const router = useRouter()
 
-  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
-
-
-
-
-  const handleSignUp = async () => {
+  const handleSignIn = async () => {
     try {
-      const res = await createUserWithEmailAndPassword(email, password)
+      const res = await signInWithEmailAndPassword(email, password)
       console.log({res})
-      // sessionStorage.setItem('user',true)
+    //   sessionStorage.setItem('user',true)
       setEmail('');
       setPassword('');
+      router.push("/case")
     } catch(e){
       console.error(e)
     }
@@ -79,14 +78,16 @@ const Contact = ({ data }) => {
                   placeholder="Your message"
                 />
               </div> */}
-              <button type="submit" className="btn btn-primary" onClick={handleSignUp}>
+              <button type="submit" className="btn btn-primary" onClick={handleSignIn}>
                 Submit
               </button>
-              {/* <Link className="btn btn-primary mt-4"
-                href={`/case`}
+              <br></br>
+              <br></br>
+              <Link className="btn btn-primary mt-4"
+                href={`/contact`}
                 rel="">
-                Submit
-              </Link> */}
+                 Do not have an account? Register!
+              </Link>
           </div>
           <div className="content col-12 md:col-6 lg:col-5">
             {markdownify(info.title, "h4")}
@@ -105,4 +106,4 @@ const Contact = ({ data }) => {
   );
 };
 
-export default Contact;
+export default Login;

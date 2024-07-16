@@ -9,10 +9,18 @@ import { clsx } from 'clsx'
 import twMerge from 'tailwind-merge'
 import ChecklistForm from "@layouts/ChecklistForm"
 import Column from './components/Columns'
-
+import Link from "next/link";
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../pages/firebase/config';
+import { signOut, getAuth } from '@firebase/auth';
+import { useRouter } from "next/navigation";
 
 
 export default function Checklist() {
+  const auth = getAuth();
+  const [user] = useAuthState(auth);
+  console.log("Case:")
+  console.log(user)
   // const [open, setOpen] = useState(true)
 
   // const [fullyLoaded, setFullyLoaded] = useState(false)
@@ -31,12 +39,43 @@ export default function Checklist() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  async function fetchData(url, data = {}) {
+    // console.log("email data in fetchdata: ", JSON.stringify(data))
+    const idToken = await user.getIdToken();
+    console.log(user.email)
+    const response = await fetch(url, {
+        headers: { 
+          'Authorization': `Bearer ${idToken}`,
+         },
+    });
+    console.log("here?")
+    console.log(response)
+  
+    if (!response.ok) {
+        throw new Error(`Error fetching data: ${response.statusText}`);
+    }
+  
+    return response;
+  }
+
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchChecklist () {
       setIsLoading(true);
       try {
-        const response = await fetch('https://borderless-backend.vercel.app/data');
+        const idToken = await user.getIdToken();
+        console.log("here:")
+        console.log(idToken)
+        console.log(user.email)
+        // const response = await fetch("http://localhost:8000/data");
+        const response = await fetchData("https://borderless-backend.vercel.app/datauser");
+
+        // const response = await fetchData("http://localhost:8000/datauser");
+
+
+        // const response = await fetch('https://borderless-backend.vercel.app/data');
+        console.log("taking it in mate!")
         const data = await response.json();
+        console.log(data)
         setChecklistData(data);
       } catch (error) {
         setError(error);
@@ -45,7 +84,7 @@ export default function Checklist() {
       }
     };
 
-    fetchData();
+    fetchChecklist();
   }, []);
 
 

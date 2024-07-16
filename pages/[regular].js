@@ -7,6 +7,9 @@ import Checklist from "@layouts/Checklist"
 import Case from "@layouts/Case"
 import Pricing from "@layouts/Pricing";
 import { getRegularPage, getSinglePage } from "@lib/contentParser";
+import Login from "../layouts/Login";
+import ProtectedRoute from "../layouts/ProtectedRoute";
+import Profile from "../layouts/Profile";
 
 // for all regular pages
 const RegularPages = ({ data }) => {
@@ -32,9 +35,19 @@ const RegularPages = ({ data }) => {
       ) : layout === "faq" ? (
         <Faq data={data} />
       ) : layout === "checklist" ? (
+        <ProtectedRoute>
         <Checklist data={data}/>
+        </ProtectedRoute>
       ) : layout === "case" ? (
+        <ProtectedRoute>
         <Case data={data}/>
+        </ProtectedRoute>
+      ) : layout === "login" ? (
+        <Login data={data}/>
+      ) : layout === "profile" ? (
+        <ProtectedRoute>
+        <Profile data = {data}/>
+        </ProtectedRoute>
       ) : (
         <Default data={data} />
       )}
