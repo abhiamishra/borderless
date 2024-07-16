@@ -3,7 +3,7 @@ import config from "@config/config.json";
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { useState } from "react";
-import { auth } from '../pages/firebase/config'
+import { auth } from "../config";
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { useRouter } from "next/navigation";
 // import { createUserWithEmailAndPassword } from "@firebase/auth";
