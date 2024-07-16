@@ -1,7 +1,7 @@
 // ProtectedRoute.js
 import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../pages/firebase/config';
+import { auth } from '../config';
 import { useEffect } from 'react'; // Add this import
 // import getServer
 
