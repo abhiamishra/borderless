@@ -21,6 +21,10 @@
       "url": "/checklist"
     },
     {
+      "name": "Ask Boundless",
+      "url": "/question"
+    },
+    {
       "name": "Profile",
       "url": "/profile"
     }

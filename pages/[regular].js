@@ -10,6 +10,7 @@ import { getRegularPage, getSinglePage } from "@lib/contentParser";
 import Login from "../layouts/Login";
 import ProtectedRoute from "../layouts/ProtectedRoute";
 import Profile from "../layouts/Profile";
+import Question from "../layouts/Question";
 
 // for all regular pages
 const RegularPages = ({ data }) => {
@@ -47,6 +48,10 @@ const RegularPages = ({ data }) => {
       ) : layout === "profile" ? (
         <ProtectedRoute>
         <Profile data = {data}/>
+        </ProtectedRoute>
+      ) : layout == "question" ? (
+        <ProtectedRoute>
+          <Question data = {data}/>
         </ProtectedRoute>
       ) : (
         <Default data={data} />

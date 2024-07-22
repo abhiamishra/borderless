@@ -35,6 +35,7 @@
     "react-hook-form": "^7.51.3",
     "react-icons": "^4.7.1",
     "react-lite-youtube-embed": "^2.3.52",
+    "react-markdown": "^9.0.1",
     "react-query": "^3.39.3",
     "react-toastify": "^10.0.5",
     "rehype-slug": "^5.1.0",

@@ -37,11 +37,11 @@ const Contact = ({ data }) => {
 
   return (
     <section className="section">
-      <div className="container">
-        {markdownify(title, "h1", "text-center font-normal")}
-        <div className="contact-form d-flex justify-content-center">
-          <div className="col-12 md:col-6 lg:col-3 text-center">
-              <div className="mb-3">
+      <div className="container mx-auto px-4">
+        {markdownify(title, "h1", "text-center font-normal mb-8")}
+        <div className="max-w-md mx-auto">
+          <div className="w-full max-w-md">
+              <div className="mb-4">
                 <input
                   className="form-input w-full rounded"
                   name="email"
@@ -52,7 +52,7 @@ const Contact = ({ data }) => {
                   required
                 />
               </div>
-              <div className="mb-3">
+              <div className="mb-4">
                 <input
                   className="form-input w-full rounded"
                   name="passw"
@@ -79,9 +79,11 @@ const Contact = ({ data }) => {
                   placeholder="Your message"
                 />
               </div> */}
-              <button type="submit" className="btn btn-primary" onClick={handleSignUp}>
-                Submit
-              </button>
+              <div className="text-center">
+                <button type="submit" className="btn btn-primary" onClick={handleSignUp}>
+                  Submit
+                </button>
+              </div>
               {/* <Link className="btn btn-primary mt-4"
                 href={`/case`}
                 rel="">
