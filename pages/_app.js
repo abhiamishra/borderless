@@ -61,6 +61,7 @@ const App = ({ Component, pageProps }) => {
       </Head>
         <QueryClientProvider client={client}>
           <Component {...pageProps} />
+          <Analytics />
         </QueryClientProvider>
     </>
   );
