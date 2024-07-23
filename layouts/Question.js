@@ -104,6 +104,8 @@ const Question = ({ data }) => {
       <div className="container mx-auto px-4">
         {markdownify(title, "h1", "text-center font-normal mb-8")}
         <div className="max-w-3xl mx-auto">
+          <p>Ask Borderless uses LLMs and answers can vary/be incorrect. Any output should not be taken as legal advice.</p>
+          <br></br>
           <div className="w-full">
               <div className="mb-4">
                 <input
