@@ -7,6 +7,7 @@ import "styles/style.scss";
 import { QueryClient, QueryClientProvider } from "react-query";
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { Analytics } from "@vercel/analytics/react"
 
 const App = ({ Component, pageProps }) => {
 

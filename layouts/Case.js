@@ -90,7 +90,7 @@ export default function Case() {
       try {
         console.log("hi - sending data for email!")
         console.log(userEmail)
-        const response = await fetchData('https://borderless-backend.vercel.app/insert-user'); 
+        const response = await fetchData('https://borderless-backend.vercel.app/api/insert-user'); 
         // const response = await fetchData('http://localhost:8000/insert-user'); // Replace with your endpoint
         console.log(response.data); // Example: Store data in state
       } catch (error) {
